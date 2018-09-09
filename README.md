@@ -1,2 +1,3 @@
 # mg
 Replacing jQuery
+Full documentation coming soon...
