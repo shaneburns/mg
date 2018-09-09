@@ -118,6 +118,14 @@
 // These do not rely on the query functionality of the MG() function
 // so they are down here in the dirt. With the rest of us.
 
+// Image Preloader
+mg.images = new Array()
+mg.preloadImg = function (){
+    for (let i = arguments.length; i--;){
+        mg.images[i] = new Image()
+        mg.images[i].src = mg.imgLoc + arguments[i]
+    }
+}
 // Random Number Generators for decimals and integers
 mg.rand = ( max = 1,min = 0 )=>{ return Math.random() * (max - min) + min; }
 mg.randInt = ( max = 1, min = 0 )=>{ return Math.floor(Math.random() * (max - min + 1)) + min; }
