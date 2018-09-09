@@ -1,3 +1,4 @@
-# mg
-Replacing jQuery
-Full documentation coming soon...
+# MG - Master Global Toolkit
+Replacing jQuery, refining functionality.
+
+# Full documentation coming soon...
