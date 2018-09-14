@@ -99,7 +99,7 @@
                 // Set parent parameter
                 self.slideshow.parent = self.el
                 // Assign paramenters
-                mg.deeepAssign(self.slideshow.p, params)
+                mg.deepAssign(self.slideshow.p, params)
                 // Set the click event listeners on the arrows for the slideshow
                 self.slideshow.p.arrows.on('mousedown',self.slideshow.changeSlide)
                 return self.slideshow
@@ -130,8 +130,8 @@
     mg.randInt = ( max = 1, min = 0 )=>{ return Math.floor(Math.random() * (max - min + 1)) + min; }
     // Absolute Value
     mg.abs = (val)=>{ return (-(val) > 0) ? -(val): (val); }
-    mg.isEven = (num)=> return num % 2 == 0 // Self explanatory
-    mg.isOdd = (num)=> return num % 2 == 1 // Self explanatory
+    mg.isEven = (num)=> { return num % 2 == 0 } // Self explanatory
+    mg.isOdd = (num)=> { return num % 2 == 1 } // Self explanatory
     // For a quick Class or ID
     mg.generateSelector = ( l = 1 )=>{ const g = { t: '', p: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'};for(let i = l; i--;)g.t+=g.p.charAt(mg.randInt((i==(l-1)) ? g.p.length-11 : g.p.length-1));return g.t;}
     // Encode form Data
