@@ -108,7 +108,7 @@
 
         return self
     }
-    // We need that our library is globally accesible, then we save in the window
+    // Make MG globally accessible in the window document object.
     if(typeof(window.mg) === 'undefined'){
         window.mg = MG;
     }
