@@ -5,8 +5,13 @@ Replacing jQuery, retaining functionality, refining skills.
 
 # Funcitonality
   ## mg() :
-    - Accepts string or DOMobject as its one and only parameter
-    - ### selector :
-        - string/DOMobject passed in on main function call
-    - ### el :
-        - element or NodeList of elements returned from document.querySelectorAll(self.selector)
+    > Accepts string or DOMobject as its one and only condition
+    Keys{
+      - self: 
+          > reference to this,
+      - selector :
+          > string/DOMobject passed in on main function call,
+      - el :
+          > element or NodeList of elements returned from document.querySelectorAll(self.selector),
+      - etc. :>
+    }
