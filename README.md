@@ -1,4 +1,12 @@
 # MG - Master Global Toolkit
-Replacing jQuery, refining functionality.
+Replacing jQuery, retaining functionality, refining skills.
 
-# Full documentation coming soon...
+### Full documentation coming soon...
+
+# Funcitonality
+  ## mg() :
+    - Accepts string or DOMobject as its one and only parameter
+    - ### selector :
+        - string/DOMobject passed in on main function call
+    - ### el :
+        - element or NodeList of elements returned from document.querySelectorAll(self.selector)
