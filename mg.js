@@ -28,7 +28,6 @@
             else self.el.forEach((el)=> el['on'+type] = callback )
         }
 
-
         // Menu control for Nav
         // This allows you to quickly hide and show a nav and an overly with one function call
         // pass mg the name of your nav and overlay(or any element you want to toggle the class of in the process)
@@ -73,13 +72,10 @@
                 if(e.target.classList.contains('enabled') && !self.slideshow.busy){
                     // Determine direction
                     this.dir = (e.target.classList.contains('right')) ? 1 : -1
-
                     // Handle out-of-bounds and end-of-bounds scenarios (disable arrows)
                     if(this.dir + self.slideshow.curr > self.slideshow.p.slides.el.length || this.dir + self.slideshow.curr < 1) return;
                     else if(this.dir + self.slideshow.curr == self.slideshow.p.slides.el.length) self.slideshow.p.rArrow.el.classList.remove('enabled')
                     else if(this.dir + self.slideshow.curr == 1) self.slideshow.p.lArrow.el.classList.remove('enabled')
-
-                    // Set slideshow to busy
                     self.slideshow.busy = true
                     // Remove Active Class from current slide
                     self.slideshow.p.slides.el[self.slideshow.curr-1].classList.remove(self.slideshow.p.activeClass)
@@ -89,7 +85,6 @@
                     setTimeout(()=>self.slideshow.p.slides.el[self.slideshow.curr-1].classList.add(self.slideshow.p.activeClass),self.slideshow.p.timers.next)
                     // Start timer to reset busy flag
                     setTimeout(()=>self.slideshow.busy = false,self.slideshow.p.timers.reset)
-
                     // Make sure the next/previous arrows are enabled if they aren't already when the opposite arrow is pressed
                     if(this.dir == 1 && !self.slideshow.p.lArrow.el.classList.contains('enabled'))self.slideshow.p.lArrow.el.classList.add('enabled')
                     else if(this.dir == -1 && !self.slideshow.p.rArrow.el.classList.contains('enabled'))self.slideshow.p.rArrow.el.classList.add('enabled')
@@ -105,7 +100,6 @@
                 return self.slideshow
             }
         }
-
         return self
     }
     // Make MG globally accessible in the window document object.
@@ -126,14 +120,18 @@
         }
     }
     // Random Number Generators for decimals and integers
-    mg.rand = ( max = 1,min = 0 )=>{ return Math.random() * (max - min) + min; }
-    mg.randInt = ( max = 1, min = 0 )=>{ return Math.floor(Math.random() * (max - min + 1)) + min; }
+    mg.rand = ( max = 1,min = 0 )=> Math.random() * (max - min) + min
+    mg.randInt = ( max = 1, min = 0 )=> Math.floor(Math.random() * (max - min + 1)) + min
     // Absolute Value
-    mg.abs = (val)=>{ return (-(val) > 0) ? -(val): (val); }
-    mg.isEven = (num)=> { return num % 2 == 0 } // Self explanatory
-    mg.isOdd = (num)=> { return num % 2 == 1 } // Self explanatory
+    mg.abs = (val)=> (-val > 0) ? -val: val
+    mg.isEven = (num)=> num % 2 == 0  // Self explanatory
+    mg.isOdd = (num)=> num % 2 == 1  // Self explanatory
+    mg.posOrneg = ( n = 1 )=> mg.rand()>.5?-n:n// Randomly set a passed in value to positive or negative(1 is used if no value is passed in)
+    // For use with SVG creation
+    // Grab an empty group element
+    mg.svgGroup = ()=> document.createElementNS('http://www.w3.org/2000/svg','g')
     // For a quick Class or ID
-    mg.generateSelector = ( l = 1 )=>{ const g = { t: '', p: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'};for(let i = l; i--;)g.t+=g.p.charAt(mg.randInt((i==(l-1)) ? g.p.length-11 : g.p.length-1));return g.t;}
+    mg.generateSelector = ( l = 1 )=>{ const g = { t: '', p: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'};g.t=g.p.charAt(mg.randInt(g.p.length-11));for(let i = l; i--;)g.t+=g.p.charAt(g.randInt(g.p.length-1));return g.t;}
     // Encode form Data
     mg.formEncode = ( obj )=>{
         let str = []
